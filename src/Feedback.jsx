@@ -14,6 +14,15 @@ const Statistics = ({good, neutral, bad}) =>{
     )
 }
 
+const FeedbackButtons = ({ handleGoodClick, handleNeutralClick, handleBadClick }) => {
+    return (
+      <div>
+        <button onClick={handleGoodClick}>good</button>
+        <button onClick={handleNeutralClick}>neutral</button>
+        <button onClick={handleBadClick}>bad</button>
+      </div>
+    );
+  };
 
 
 
@@ -39,9 +48,11 @@ const Feedback = ()=>{
     return (
       <div>
         <h2>give feedback</h2>
-        <button onClick ={handleGoodClick}> good </button>
-        <button onClick ={handleNeutralClick}> neutral</button>
-        <button onClick ={handleBadClick}>bad</button>
+        <FeedbackButtons
+        handleGoodClick={handleGoodClick}
+        handleNeutralClick={handleNeutralClick}
+        handleBadClick={handleBadClick}
+      />
         <h2> statistics</h2>
         
         {good === 0 && bad === 0 && neutral === 0 ? (

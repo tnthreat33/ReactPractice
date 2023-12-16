@@ -25,7 +25,6 @@ const FeedbackButtons = ({ handleGoodClick, handleNeutralClick, handleBadClick }
   };
 
 
-
 const Feedback = ()=>{
     
     const [good, setGood] = useState(0)

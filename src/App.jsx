@@ -1,69 +1,41 @@
-import Feedback from "./Feedback";
-
-
-const Header = (props) => {
-  return (
-    <h1>{props.course.name}</h1>
-  );
-};
-
-const Part = (props) => {
-  console.log(props.parts.parts.parts[0]);
-  return (
-    <div>
-      <p> {props.parts.parts.parts[0].name}</p>
-      <p> {props.parts.parts.parts[1].name}</p>
-      <p> {props.parts.parts.parts[2].name}</p>
-    </div>
-
-  );
-};
-
-
-const Content = (props) => {
- 
-  return (
-    <Part parts = {props}/>
-  );
-};
-
-const Total = (props) => {
-  console.log(props);
-  let totalExercises = 0
-  
-  props.parts.parts.forEach((part)=>{totalExercises += part.exercises})
-
-  return(
-  <p> Number of Exercises {totalExercises} </p>
-)}
+import { useState } from 'react'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas' }
+  ]) 
+  const [newName, setNewName] = useState('')
+  
+
+  const addName =(e) => {
+    e.preventDefault();
+    setPersons([...persons, {name: newName}])
+  }
+
+  const handleNameChange= (e) =>{
+    
+    setNewName(e.target.value)
   }
 
   return (
     <div>
-      <Header course={course} />
-      <Content parts = {course}/>
-      <Total parts = {course}/>
-      <Feedback/>
+      <h2>Phonebook</h2>
+      <form onSubmit = {addName}>
+        <div>
+          name: <input value = {newName} onChange ={handleNameChange}/>
+        </div>
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      {persons.map((name)=>(
+        <ul key = {name.name}>
+          <li> {name.name}</li>
+        </ul>
+      ))}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

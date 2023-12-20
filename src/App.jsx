@@ -44,7 +44,7 @@ const App = () => {
       {persons.map((person) => (
         <ul key={person.name}>
           <li>
-            {person.name} - {person.number}
+            {person.name} : {person.number}
           </li>
         </ul>
       ))}

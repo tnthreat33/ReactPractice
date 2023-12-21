@@ -20,6 +20,7 @@ const FeedbackButtons = ({ handleGoodClick, handleNeutralClick, handleBadClick }
         <button onClick={handleGoodClick}>good</button>
         
         <button onClick={handleNeutralClick}>neutral</button>
+
         <button onClick={handleBadClick}>bad</button>
       </div>
     );
@@ -53,6 +54,7 @@ const Feedback = ()=>{
         handleNeutralClick={handleNeutralClick}
         handleBadClick={handleBadClick}
       />
+      
         <h2> statistics</h2>
         
         {good === 0 && bad === 0 && neutral === 0 ? (

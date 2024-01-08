@@ -29,6 +29,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      
       <form onSubmit={addName}>
         <div>
           name: <input value={newName} onChange={handleNameChange} />

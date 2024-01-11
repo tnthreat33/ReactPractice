@@ -17,7 +17,6 @@ const App = () => {
       setNewNumber('');
     }
   };
-
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };

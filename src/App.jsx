@@ -1,9 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: 'Arto Hellas', number: '123456789' }]);
+  
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/db.json');
+        setData(response.data.data)
+      } catch (error){
+        console.log('Error', error);
+      }
+    }
+    fetchData();
+
+  }, [])
 
   const addName = (e) => {
     e.preventDefault();
@@ -17,6 +31,7 @@ const App = () => {
       setNewNumber('');
     }
   };
+
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };
@@ -40,7 +55,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      {persons.map((person) => (
+      {data.map((person) => (
         <ul key={person.name}>
           <li>
             {person.name} : {person.number}

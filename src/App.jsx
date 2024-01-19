@@ -31,7 +31,7 @@ const App = () => {
     } else {
       try {
         await axios.post('/db.json', { name: newName, number: newNumber });
-        setData([...data, { name: newName, number: newNumber }]);
+        setData(prevData => [...prevData, { name: newName, number: newNumber }]);
         setNewName('');
         setNewNumber('');
       } catch (error) {

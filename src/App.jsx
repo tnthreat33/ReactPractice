@@ -6,11 +6,14 @@ const App = () => {
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [data, setData] = useState([])
+  console.log(data)
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/db.json');
-        setData(response.data.data)
+        console.log(response.data)
+        setData(response.data)
       } catch (error){
         console.log('Error', error);
       }
@@ -21,12 +24,12 @@ const App = () => {
 
   const addName = (e) => {
     e.preventDefault();
-    const personExists = persons.some((person) => person.name === newName);
+    const personExists = data.some((person) => person.name === newName);
     
     if (personExists) {
       alert(`${newName} is already added to phonebook`);
     } else {
-      setPersons([...persons, { name: newName, number: newNumber }]);
+      setData([...data, { name: newName, number: newNumber }]);
       setNewName('');
       setNewNumber('');
     }

@@ -22,16 +22,21 @@ const App = () => {
 
   }, [])
 
-  const addName = (e) => {
+  const addName = async (e) => {
     e.preventDefault();
     const personExists = data.some((person) => person.name === newName);
-    
+
     if (personExists) {
-      alert(`${newName} is already added to phonebook`);
+      alert(`${newName} is already added to the phonebook`);
     } else {
-      setData([...data, { name: newName, number: newNumber }]);
-      setNewName('');
-      setNewNumber('');
+      try {
+        await axios.post('/db.json', { name: newName, number: newNumber });
+        setData([...data, { name: newName, number: newNumber }]);
+        setNewName('');
+        setNewNumber('');
+      } catch (error) {
+        console.error('Error adding person:', error);
+      }
     }
   };
 

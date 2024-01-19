@@ -70,6 +70,19 @@ const App = () => {
           </li>
         </ul>
       ))}
+    
+    <div>
+        <h3> Notes:</h3>
+        <l1 className='first'>
+          This is the first note
+        </l1>
+        <li>
+          This is another note
+        </li>
+        <li>
+          wow a third note
+        </li>
+    </div>
     </div>
   );
 };

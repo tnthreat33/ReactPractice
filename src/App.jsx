@@ -16,7 +16,6 @@ const Footer = () => {
   )
 }
 
-
 const App = () => {
   
   const [newName, setNewName] = useState('');

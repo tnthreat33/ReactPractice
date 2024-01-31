@@ -17,7 +17,7 @@ const Footer = () => {
 }
 
 const App = () => {
-  
+  j
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [data, setData] = useState([])

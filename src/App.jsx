@@ -97,7 +97,7 @@ const App = () => {
           wow a third note
         </li>
     </div>
-    ,<Footer />
+    <Footer />
     </div>
   );
 };
